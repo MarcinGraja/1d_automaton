@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:id="gridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.Controller">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="400.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <Canvas fx:id="canvas" height="600.0" width="700.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+      <AnchorPane maxHeight="100.0" prefWidth="1000.0" GridPane.rowIndex="1">
+         <children>
+            <TextField editable="false" layoutX="173.0" layoutY="14.0" prefHeight="31.0" prefWidth="90.0" text="row width" />
+            <Button layoutX="409.0" layoutY="14.0" mnemonicParsing="false" onAction="#draw" prefHeight="31.0" prefWidth="98.0" text="Start" />
+            <TextField editable="false" layoutX="303.0" layoutY="14.0" prefHeight="31.0" prefWidth="90.0" text="iterations" />
+            <TextField layoutX="44.0" layoutY="17.0" prefHeight="25.0" prefWidth="90.0" text="rule" />
+            <Spinner fx:id="ruleSpinner" editable="true" layoutX="44.0" layoutY="52.0" prefHeight="25.0" prefWidth="90.0" />
+            <Spinner fx:id="rowWidthSpinner" editable="true" layoutX="173.0" layoutY="52.0" prefHeight="25.0" prefWidth="90.0" />
+            <Spinner fx:id="iterationsSpinner" editable="true" layoutX="303.0" layoutY="52.0" prefHeight="25.0" prefWidth="90.0" />
+            <CheckBox fx:id="maxResolutionOnResizeCheckBox" layoutX="409.0" layoutY="44.0" mnemonicParsing="false" text="max viable resolution on resize" />
+            <CheckBox fx:id="redrawOnResizeCheckBox" layoutX="409.0" layoutY="69.0" mnemonicParsing="false" text="auto render on resize" />
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>
