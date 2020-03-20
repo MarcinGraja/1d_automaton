@@ -3,7 +3,6 @@ package main.controller;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -30,22 +29,33 @@ public class Controller {
     @FXML
     private CheckBox maxResolutionOnResizeCheckBox;
     @FXML
-    private CheckBox redrawOnResizeCheckBox;
+    private CheckBox autoRedrawCheckBox;
     private void resetSpinners(boolean setToMax){
         int oldValue;
         if (rowWidthSpinner.getValue() != null) {
             oldValue = rowWidthSpinner.getValue();
         }
         else oldValue = (int) canvas.getWidth();
+
         rowWidthSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, (int) canvas.getWidth()));
         rowWidthSpinner.getValueFactory().setValue((int)Math.min(oldValue, canvas.getWidth()));
+        rowWidthSpinner.getValueFactory().valueProperty().addListener((observableValue, integer, t1) -> {
+            if (autoRedrawCheckBox.isSelected()){
+                draw();
+            }
+        });
 
         if (iterationsSpinner.getValue() != null)
             oldValue = iterationsSpinner.getValue();
         else oldValue = (int) canvas.getHeight();
+
         iterationsSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, (int) canvas.getHeight()));
         iterationsSpinner.getValueFactory().setValue((int)Math.min(oldValue, canvas.getHeight()));
-
+        iterationsSpinner.getValueFactory().valueProperty().addListener((observableValue, integer, t1) -> {
+            if (autoRedrawCheckBox.isSelected()){
+                draw();
+            }
+        });
         if (setToMax){
             rowWidthSpinner.getValueFactory().setValue((int) canvas.getWidth());
             iterationsSpinner.getValueFactory().setValue((int) canvas.getHeight());
@@ -58,7 +68,7 @@ public class Controller {
         gridPane.widthProperty().addListener((observableValue, oldValue, newValue) -> {
             canvas.setWidth(newValue.doubleValue() - gridPane.getColumnConstraints().get(0).getMaxWidth());
             resetSpinners(maxResolutionOnResizeCheckBox.isSelected());
-            if (redrawOnResizeCheckBox.isSelected()) {
+            if (autoRedrawCheckBox.isSelected()) {
                 draw();
             }
         });
@@ -66,16 +76,16 @@ public class Controller {
         gridPane.heightProperty().addListener((observableValue, oldValue, newValue) -> {
             canvas.setHeight(newValue.doubleValue()- gridPane.getRowConstraints().get(1).getMaxHeight());
             resetSpinners(maxResolutionOnResizeCheckBox.isSelected());
-            if (redrawOnResizeCheckBox.isSelected()) {
+            if (autoRedrawCheckBox.isSelected()) {
                 draw();
             }
         });
-
-        rowWidthSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(
-                1, (int)canvas.getWidth(), (int)canvas.getWidth()) );
-        iterationsSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(
-                1, (int)canvas.getHeight(), (int)canvas.getHeight()) );
         ruleSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 255, 90));
+        ruleSpinner.getValueFactory().valueProperty().addListener((observableValue, integer, t1) -> {
+            if (autoRedrawCheckBox.isSelected()){
+                draw();
+            }
+        });
     }
     @FXML
     public void draw(){

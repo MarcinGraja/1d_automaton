@@ -24,7 +24,7 @@
             <Spinner fx:id="rowWidthSpinner" editable="true" layoutX="173.0" layoutY="52.0" prefHeight="25.0" prefWidth="90.0" />
             <Spinner fx:id="iterationsSpinner" editable="true" layoutX="303.0" layoutY="52.0" prefHeight="25.0" prefWidth="90.0" />
             <CheckBox fx:id="maxResolutionOnResizeCheckBox" layoutX="409.0" layoutY="44.0" mnemonicParsing="false" text="max viable resolution on resize" />
-            <CheckBox fx:id="redrawOnResizeCheckBox" layoutX="409.0" layoutY="69.0" mnemonicParsing="false" text="auto render on resize" />
+            <CheckBox fx:id="autoRedrawCheckBox" layoutX="409.0" layoutY="69.0" mnemonicParsing="false" text="auto redraw" />
          </children>
       </AnchorPane>
    </children>
