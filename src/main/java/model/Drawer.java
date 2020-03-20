@@ -1,8 +1,6 @@
-package main.model;
+package main.java.model;
 
-import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.shape.Ellipse;
 import javafx.scene.paint.Color;
 import java.util.List;
 

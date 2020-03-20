@@ -1,4 +1,4 @@
-package main.model;
+package main.java.model;
 
 public class Tuple<T1, T2> {
     public T1 x;

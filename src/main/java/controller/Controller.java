@@ -1,4 +1,4 @@
-package main.controller;
+package main.java.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -8,8 +8,8 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import main.model.Drawer;
-import main.model.Tuple;
+import main.java.model.Drawer;
+import main.java.model.Tuple;
 
 import java.util.ArrayList;
 
